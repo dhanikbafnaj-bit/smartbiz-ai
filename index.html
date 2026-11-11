@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10233f">
+<title>SmartBiz AI</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">S</div><div><strong>SmartBiz AI</strong><small>Intelligence for Every Business</small></div></div>
+  <button id="installBtn" class="outline" hidden>Install app</button>
+</header>
+<main>
+  <section class="welcome">
+    <div><p class="eyebrow">BUSINESS WORKSPACE</p><h1>Run your business smarter.</h1><p class="muted">A simple workspace for products, customer enquiries and order tracking.</p></div>
+    <div class="demo-tag">DEMO VERSION</div>
+  </section>
+  <nav class="tabs" aria-label="Main navigation">
+    <button class="tab active" data-tab="home">Overview</button>
+    <button class="tab" data-tab="assistant">AI assistant</button>
+    <button class="tab" data-tab="products">Products</button>
+    <button class="tab" data-tab="enquiries">Enquiries</button>
+    <button class="tab" data-tab="orders">Orders</button>
+    <button class="tab" data-tab="settings">Settings</button>
+  </nav>
+  <section id="home" class="page active">
+    <div class="stats">
+      <article class="stat"><span>Products</span><b id="productCount">0</b></article>
+      <article class="stat"><span>Enquiries</span><b id="enquiryCount">0</b></article>
+      <article class="stat"><span>Open enquiries</span><b id="openCount">0</b></article>
+    </div>
+    <div class="panel"><h2>Quick actions</h2><div class="actions">
+      <button class="primary" data-go="products">＋ Add product</button>
+      <button class="secondary" data-go="enquiries">＋ Add enquiry</button>
+      <button class="secondary" data-go="assistant">Ask assistant</button>
+    </div></div>
+    <div class="panel"><h2>Recent enquiries</h2><div id="recentEnquiries" class="empty">No enquiries yet. Add your first enquiry.</div></div>
+    <p class="footnote">Your data is saved in this browser on this device. Export a backup regularly.</p>
+  </section>
+
+  <section id="assistant" class="page">
+    <div class="panel"><h2>Business assistant</h2><p class="muted">Ask about products saved in your catalogue. This starter version uses simple matching rules, not a live AI model.</p>
+      <label for="question">Customer question</label><textarea id="question" placeholder="Example: What is the price of the 9W LED bulb?"></textarea>
+      <button id="askBtn" class="primary">Generate reply</button>
+      <div id="answer" class="answer" aria-live="polite">Your suggested reply will appear here.</div>
+      <p class="footnote">Always verify price, stock and delivery details before sending a reply.</p>
+    </div>
+  </section>
+
+  <section id="products" class="page">
+    <div class="panel"><h2>Add a product</h2>
+      <form id="productForm" class="form-grid">
+        <label>Product name<input id="pName" required maxlength="80" placeholder="e.g. LED bulb 9W"></label>
+        <label>Price (₹)<input id="pPrice" required type="number" min="0" step="0.01" placeholder="90"></label>
+        <label>Details<input id="pDetails" maxlength="160" placeholder="Brand, size, specification"></label>
+        <button class="primary" type="submit">Save product</button>
+      </form>
+    </div>
+    <div class="panel"><h2>Product catalogue</h2><div id="productList" class="item-list"></div></div>
+  </section>
+
+  <section id="enquiries" class="page">
+    <div class="panel"><h2>Record an enquiry</h2>
+      <form id="enquiryForm" class="form-grid">
+        <label>Customer label<input id="eCustomer" required maxlength="60" placeholder="Customer A (avoid private details in demo)"></label>
+        <label>What do they need?<input id="eNeed" required maxlength="180" placeholder="Price of 2.5 sq.mm wire"></label>
+        <label>Status<select id="eStatus"><option>New</option><option>Interested</option><option>Completed</option></select></label>
+        <button class="primary" type="submit">Save enquiry</button>
+      </form>
+    </div>
+    <div class="panel"><h2>Enquiry tracker</h2><div id="enquiryList" class="item-list"></div></div>
+  </section>
+
+  <section id="orders" class="page">
+    <div class="panel"><h2>Orders</h2><p class="muted">Order management is a placeholder in this starter build. Use the enquiry tracker for demo follow-ups; do not record payment credentials or sensitive customer information.</p></div>
+  </section>
+
+  <section id="settings" class="page">
+    <div class="panel"><h2>Business settings</h2>
+      <label>Business name<input id="businessName" maxlength="80" value="My Business"></label>
+      <button id="saveSettings" class="primary">Save settings</button>
+      <hr>
+      <h3>Data backup</h3><p class="muted">Download a JSON backup of your products, enquiries and settings.</p>
+      <button id="exportBtn" class="secondary">Export backup</button>
+      <label class="file-label">Restore backup<input id="importFile" type="file" accept="application/json"></label>
+      <hr>
+      <button id="resetBtn" class="danger">Reset demo data</button>
+      <p class="footnote">This is a local demo. It has no secure user accounts, cloud sync, payment processing or WhatsApp connection.</p>
+    </div>
+  </section>
+</main>
+<footer>SmartBiz AI · Starter PWA · Keep customer data private</footer>
+<script src="app.js"></script>
+</body>
+</html>

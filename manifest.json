@@ -1,0 +1,10 @@
+{
+  "name": "SmartBiz AI",
+  "short_name": "SmartBiz",
+  "description": "A simple business product and enquiry workspace",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#10233f",
+  "icons": []
+}
